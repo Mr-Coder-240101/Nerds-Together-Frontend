@@ -45,5 +45,9 @@
       "last 1 safari version"
     ]
   },
+    "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "proxy": "https://nerds-together-api.glitch.me"
 }
