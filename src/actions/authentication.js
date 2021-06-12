@@ -14,10 +14,7 @@ export const authenticateUser = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get(
-            "https://nerds-together.glitch.me/api/authentication",
-            config
-        );
+        const response = await axios.get("/api/authentication", config);
         const user = response.data;
         dispatch({
             type: ActionTypes.AUTHENTICATION_SUCCESS,
@@ -42,13 +39,9 @@ export const registerUser = (credentials) => async (dispatch) => {
             "Content-Type": "application/json",
         },
     };
-    const body = JSON.stringify(credentials);
+    const body = credentials;
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/users",
-            body,
-            config
-        );
+        const response = await axios.post("/api/users/", body, config);
         dispatch(setAlert("Successfully Signed Up", "success"));
         dispatch({
             type: ActionTypes.REGISTRATION_SUCCESS,
@@ -73,13 +66,9 @@ export const loginUser = (credentials) => async (dispatch) => {
             "Content-Type": "application/json",
         },
     };
-    const body = JSON.stringify(credentials);
+    const body = credentials;
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/authentication",
-            body,
-            config
-        );
+        const response = await axios.post("/api/authentication/", body, config);
         dispatch(setAlert("Successfully Signed In", "success"));
         dispatch({
             type: ActionTypes.LOGIN_SUCCESS,
@@ -112,13 +101,9 @@ export const forgotPassword = (email) => async (dispatch) => {
             "Content-Type": "application/json",
         },
     };
-    const body = JSON.stringify({ email });
+    const body = { email };
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/authentication/forgot-password",
-            body,
-            config
-        );
+        const response = await axios.post("/api/authentication/forgot-password", body, config);
         dispatch(setAlert(response.data.msg, "success"));
     } catch (error) {
         const errors = error.response.data.errors;
@@ -135,13 +120,9 @@ export const resetPassword = (password, token) => async (dispatch) => {
             "x-auth-token": token,
         },
     };
-    const body = JSON.stringify({ password });
+    const body = { password };
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/authentication/reset-password",
-            body,
-            config
-        );
+        const response = await axios.post("/api/authentication/reset-password", body, config);
         dispatch(setAlert(response.data.msg, "success"));
         dispatch(logoutUser());
     } catch (error) {
@@ -162,11 +143,7 @@ export const changeAvatar = (formData) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/authentication/avatars",
-            formData,
-            config
-        );
+        const response = await axios.post("/api/authentication/avatars", formData, config);
         const user = response.data;
         dispatch({
             type: ActionTypes.CHANGE_USER_AVATAR,
