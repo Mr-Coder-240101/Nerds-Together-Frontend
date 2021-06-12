@@ -12,7 +12,10 @@ export const getUserProfile = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get("/api/profiles/me", config);
+        const response = await axios.get(
+            "https://nerds-together.glitch.me/api/profiles/me",
+            config
+        );
         const profile = response.data;
         dispatch({
             type: ActionTypes.GET_PROFILE_SUCCESS,
@@ -36,7 +39,7 @@ export const getUserProfiles = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get("/api/profiles", config);
+        const response = await axios.get("https://nerds-together.glitch.me/api/profiles", config);
         const profiles = response.data;
         dispatch({
             type: ActionTypes.GET_PROFILES_SUCCESS,
@@ -61,7 +64,11 @@ export const createUserProfile = (profile) => async (dispatch) => {
     };
     const body = profile;
     try {
-        const response = await axios.post("/api/profiles", body, config);
+        const response = await axios.post(
+            "https://nerds-together.glitch.me/api/profiles",
+            body,
+            config
+        );
         dispatch(setAlert("Profile Created Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -90,7 +97,11 @@ export const updateUserProfile = (profile) => async (dispatch) => {
     };
     const body = profile;
     try {
-        const response = await axios.post("/api/profiles", body, config);
+        const response = await axios.post(
+            "https://nerds-together.glitch.me/api/profiles",
+            body,
+            config
+        );
         dispatch(setAlert("Profile Updated Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -120,7 +131,11 @@ export const addExperience = (experience) => async (dispatch) => {
     };
     const body = experience;
     try {
-        const response = await axios.put("/api/profiles/experience", body, config);
+        const response = await axios.put(
+            "https://nerds-together.glitch.me/api/profiles/experience",
+            body,
+            config
+        );
         dispatch(setAlert("Experience Added Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -148,7 +163,10 @@ export const deleteExperience = (id) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.delete(`/api/profiles/experience/${id}`, config);
+        const response = await axios.delete(
+            `https://nerds-together.glitch.me/api/profiles/experience/${id}`,
+            config
+        );
         dispatch(setAlert("Experience Deleted Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -178,7 +196,11 @@ export const addEducation = (education) => async (dispatch) => {
     };
     const body = education;
     try {
-        const response = await axios.put("/api/profiles/education", body, config);
+        const response = await axios.put(
+            "https://nerds-together.glitch.me/api/profiles/education",
+            body,
+            config
+        );
         dispatch(setAlert("Education Added Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -206,7 +228,10 @@ export const deleteEducation = (id) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.delete(`/api/profiles/education/${id}`, config);
+        const response = await axios.delete(
+            `https://nerds-together.glitch.me/api/profiles/education/${id}`,
+            config
+        );
         dispatch(setAlert("Education Deleted Successfully", "success"));
         const profile = response.data;
         dispatch({
@@ -247,7 +272,10 @@ export const fetchOtherProfile = (id) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get(`/api/profiles/user/${id}`, config);
+        const response = await axios.get(
+            `https://nerds-together.glitch.me/api/profiles/user/${id}`,
+            config
+        );
         const profile = response.data;
         dispatch({
             type: ActionTypes.FETCH_OTHER_PROFILE_SUCCESS,
