@@ -15,7 +15,6 @@ class Login extends Component {
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(this.state);
     };
 
     render() {

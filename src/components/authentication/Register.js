@@ -26,7 +26,6 @@ class Register extends Component {
     onSubmitHandler = (event) => {
         event.preventDefault();
         if (this.state.password === this.state.conform_password) {
-            console.log(this.state);
         } else {
             this.props.setAlert("Password And Conform Password Do Not Match !!!", "danger", 4000);
         }

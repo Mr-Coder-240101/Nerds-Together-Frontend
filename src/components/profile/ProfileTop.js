@@ -14,10 +14,6 @@ class ProfileTop extends Component {
         formData.append("file", file, file.name);
         this.props.changeAvatar(formData);
         this.setState({ loading: true });
-        setTimeout(() => {
-            this.setState({ loading: false });
-            window.location.reload();
-        }, 6000);
     };
 
     getBackground = () => {

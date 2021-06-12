@@ -38,7 +38,6 @@ export const getAllPosts = () => async (dispatch) => {
     try {
         const response = await axios.get("https://nerds-together.glitch.me/api/posts", config);
         const allPosts = response.data;
-        console.log(allPosts);
         dispatch({
             type: ActionTypes.GET_ALL_POSTS_SUCCESS,
             payload: allPosts,
@@ -128,7 +127,6 @@ export const submitUserComment = (text, postId) => async (dispatch) => {
             });
         }
     } catch (error) {
-        console.log(error);
         const errors = error.response.data.errors;
         dispatch({
             type: ActionTypes.SUBMIT_USER_COMMENT_FAILURE,
