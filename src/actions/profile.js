@@ -70,10 +70,10 @@ export const createUserProfile = (profile) => async (dispatch) => {
             config
         );
         dispatch(setAlert("Profile Created Successfully", "success"));
-        const profile = response.data;
+        const userProfile = response.data;
         dispatch({
             type: ActionTypes.CREATE_PROFILE_SUCCESS,
-            payload: profile,
+            payload: userProfile,
         });
     } catch (error) {
         const errors = error.response.data.errors;
