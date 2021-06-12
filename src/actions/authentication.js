@@ -14,7 +14,7 @@ export const authenticateUser = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get("/api/authentication", config);
+        const response = await axios.get("https://nerds-together.glitch.me/api/authentication", config);
         const user = response.data;
         dispatch({
             type: ActionTypes.AUTHENTICATION_SUCCESS,
