@@ -12,7 +12,7 @@ export const getUserPosts = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get("https://nerds-together.glitch.me/api/posts/me", config);
+        const response = await axios.get("/api/posts/me", config);
         const userPosts = response.data;
         dispatch({
             type: ActionTypes.GET_USER_POSTS_SUCCESS,
@@ -36,7 +36,7 @@ export const getAllPosts = () => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.get("https://nerds-together.glitch.me/api/posts", config);
+        const response = await axios.get("/api/posts", config);
         const allPosts = response.data;
         console.log(allPosts);
         dispatch({
@@ -66,11 +66,7 @@ export const submitUserPost = (text) => async (dispatch) => {
         text,
     };
     try {
-        const response = await axios.post(
-            "https://nerds-together.glitch.me/api/posts",
-            body,
-            config
-        );
+        const response = await axios.post("/api/posts", body, config);
         const userPost = response.data;
         userPosts.unshift(userPost);
         dispatch({
@@ -106,11 +102,7 @@ export const submitUserComment = (text, postId) => async (dispatch) => {
     };
 
     try {
-        const response = await axios.put(
-            `https://nerds-together.glitch.me/api/posts/comments/${postId}`,
-            body,
-            config
-        );
+        const response = await axios.put(`/api/posts/comments/${postId}`, body, config);
         const comments = response.data;
         if (isUserPost) {
             const index = userPosts.findIndex((userPost) => userPost._id === postId);
@@ -149,11 +141,7 @@ export const likeButtonClicked = (postId, isUserPost) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.put(
-            `https://nerds-together.glitch.me/api/posts/likes/${postId}`,
-            null,
-            config
-        );
+        const response = await axios.put(`/api/posts/likes/${postId}`, null, config);
         const likes = response.data;
         if (isUserPost) {
             const index = userPosts.findIndex((userPost) => userPost._id === postId);
@@ -189,10 +177,7 @@ export const deletePost = (postId) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.delete(
-            `https://nerds-together.glitch.me/api/posts/post/${postId}`,
-            config
-        );
+        const response = await axios.delete(`/api/posts/post/${postId}`, config);
         dispatch(setAlert(response.data.msg));
         userPosts = userPosts.filter((userPost) => userPost._id !== postId);
         dispatch({
@@ -223,10 +208,7 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
         },
     };
     try {
-        const response = await axios.delete(
-            `https://nerds-together.glitch.me/api/posts/comments/${postId}/${commentId}`,
-            config
-        );
+        const response = await axios.delete(`/api/posts/comments/${postId}/${commentId}`, config);
         const comments = response.data;
         dispatch(setAlert("Comment Deleted Successfully", "success"));
         if (isUserPost) {
